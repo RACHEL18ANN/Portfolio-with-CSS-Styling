@@ -8,45 +8,50 @@
 </head>
 <body>
     <header>
-        <h1>Rechelle Ann A. Naliatan</h1>
-        <h2>3rd Year BSIT Student | UI/UX Designer</h2>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Rechelle Ann A. Naliatan</h1>
+            <h2>3rd Year BSIT Student | UI/UX Designer</h2>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
     <section class="image-container">
         <div class="image-section">
-            <img src="./images/me.jpg" alt="Profile Image">
+            <img src="./images/myself.jpg" alt="Profile Image">
             <p>20 Years Old | Born on September 22, 2004</p>
         </div>
     </section>
     
     <section class="page-content">
-        <div id="about" class="content-box">
+        <div id="about" class="content-box about-section">
             <h3>About Me</h3>
-            <p>Hello! I'm a 3rd-year BSIT student with a passion for UI/UX design. I love creating visually appealing and user-friendly interfaces.</p>
+            <p class="about-text">Hello! I'm a 3rd-year BSIT student with a passion for UI/UX design. I thrive on turning ideas into functional, beautiful interfaces that enhance user experiences. Whether it's wireframing, prototyping, or polishing the final product, I bring creativity and precision to every project.</p>
         </div>
         
-        <div id="education" class="content-box">
+        <div id="education" class="content-box education-section">
             <h3>Education</h3>
-            <p>Scholar at the University of Science and Technology of Southern Philippines.</p>
+            <div class="education-details">
+                <p><strong>University of Science and Technology of Southern Philippines</strong></p>
+                <p>Scholar | Pursuing Bachelor of Science in Information Technology</p>
+            </div>
         </div>
         
-        <div id="skills" class="content-box">
+        <div id="skills" class="content-box skills-section">
             <h3>Skills</h3>
-            <ul>
-                <li>UI/UX Design</li>
-                <li>Prototyping and Wireframing</li>
-                <li>HTML, CSS, and JavaScript</li>
-                <li>Figma, Sketch, Adobe XD</li>
-            </ul>
+            <div class="skills-grid">
+                <div class="skill-item"><span>🎨</span> UI/UX Design</div>
+                <div class="skill-item"><span>🔧</span> Prototyping & Wireframing</div>
+                <div class="skill-item"><span>💻</span> HTML, CSS, JavaScript</div>
+                <div class="skill-item"><span>🛠️</span> Figma, Sketch, Adobe XD</div>
+            </div>
         </div>
         
         <div id="portfolio" class="content-box">
@@ -54,15 +59,37 @@
             <p>Check out my latest projects below!</p>
         </div>
         
-        <div id="contact" class="content-box">
-            <h3>Contact</h3>
-            <p>Email: rechelleann@example.com</p>
-            <p>Phone: 0936 159 5487</p>
+        <div id="courses" class="content-box">
+            <h3>Courses Taken</h3>
+            <ul id="course-list"></ul>
+        </div>
+        
+        <div id="contact" class="content-box contact-section">
+            <h3>Contact Me</h3>
+            <div class="contact-info">
+                <p>📧 <strong>Email:</strong> rechelleann@example.com</p>
+                <p>📞 <strong>Phone:</strong> 0936 159 5487</p>
+                <p>🔗 <strong>LinkedIn:</strong> linkedin.com/in/rechelleann</p>
+            </div>
         </div>
     </section>
     
     <footer>
-        <p>&copy; 2025 Rechelle Ann A. Naliatan | All rights reserved.</p>
+        <div class="container">
+            <p>© 2025 Rechelle Ann A. Naliatan | All rights reserved.</p>
+        </div>
     </footer>
-</body>
-</html>
+
+    <script>
+      fetch('https://RACHEL18ANN.github.io/courses.json/courses.json')
+        .then(response => response.json())
+        .then(data => {
+          const courseList = document.getElementById('course-list');
+          data.courses.forEach(course => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${course.year_level} Year, ${course.sem} Semester - ${course.code}: ${course.description} (${course.credit} credits)`;
+            courseList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error('Error fetching the courses:', error));
+    </script>
